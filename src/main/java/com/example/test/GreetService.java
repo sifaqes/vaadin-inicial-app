@@ -1,6 +1,8 @@
 package com.example.test;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.util.Calendar;
 
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,15 @@ public class GreetService implements Serializable {
             return "Hello " + name;
         }
     }
+
+	public String send_date(String date) {
+
+      
+        if (date == null || date.isEmpty()) {
+            return "No date!";
+        } else {
+            return "date: " + date ;
+        }
+	}
 
 }

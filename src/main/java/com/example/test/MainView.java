@@ -9,6 +9,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
+
+import java.sql.Date;
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -49,18 +53,23 @@ public class MainView extends VerticalLayout {
         Button button = new Button("Say hello",
                 e -> Notification.show(service.greet(textField.getValue())));
 
+        Button button2 = new Button("Send date",
+                e -> Notification.show(service.send_date("test")));
+        
         // Theme variants give you predefined extra styles for components.
         // Example: Primary button has a more prominent look.
         button.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        button2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         // You can specify keyboard shortcuts for buttons.
         // Example: Pressing enter in this view clicks the Button.
         button.addClickShortcut(Key.ENTER);
+        button2.addClickShortcut(Key.ENTER);
 
         // Use custom CSS classes to apply styling. This is defined in shared-styles.css.
         addClassName("centered-content");
 
-        add(textField, button);
+        add(textField, button, button2);
     }
 
 }
